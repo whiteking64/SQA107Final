@@ -27,10 +27,19 @@ public class CourierManager {
         }
     }
 
-    // TODO: Replace with bubble sort implementation in `feature1` branch
-    // Currently using Java's built-in sort as temporary solution
+    // Bubble Sort implementation for sorting by weight
     public void sortByWeight() {
-        packages.sort(Comparator.comparing(Package::getWeight));
+        int n = packages.size();
+        for (int i = 0; i < n - 1; i++) {
+            for (int j = 0; j < n - i - 1; j++) {
+                if (packages.get(j).getWeight() > packages.get(j + 1).getWeight()) {
+                    // Swap packages
+                    Package temp = packages.get(j);
+                    packages.set(j, packages.get(j + 1));
+                    packages.set(j + 1, temp);
+                }
+            }
+        }
     }
 
     // Binary Search implementation
